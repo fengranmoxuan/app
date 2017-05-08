@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+    <title>北京知法平台科技有限公司 知识App</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        body,div,ul,li,p{
+            list-style: none;
+            font-family: "苹方", "Microsoft YaHei", "微软雅黑", arial, tahoma, \5b8b\4f53, sans-serif;
+        }
+        body{
+            padding:0.1rem;
+        }
+        div.logo{
+            width: 5rem;
+            height:5rem;
+            margin:0 auto;
+        }
+        div.logo img{
+            width:100%;
+            height:100%;
+        }
+        /***********按钮部分**********/
+        div.mainContent{
+            margin-top:0.5rem;
+        }
+        div.mainContent div{
+            text-align: center;
+        }
+        p.tip{
+            color:blue;
+            font-size:0.65rem;
+            text-align: center;
+        }
+        button{
+            width:80%;
+            border:none;
+            outline: none;
+            height:2rem;
+            border-radius: 0.3rem;
+            padding:0.3rem;
+            font-size: 0.65rem;
+            color:#fff;
+            margin:1rem;
+            background: #1aad19;
+        }
+        button span.verNum{
+            font-size: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <p class="tip">微信内不能下载，请用浏览器发打开下载</p>
+    <div class="logo">
+        <img src="../logo.png" alt="">
+    </div>
+    <div class="mainContent">
+        <div>
+            <button class="andr">
+                Android下载
+                <span class="verNum">(版本号：<span class="version" id="version"></span>)</span>
+            </button>
+        </div>
+        <div>
+            <button class="iPh">
+                iPhone下载
+                <span class="verNum">(版本号：<span class="version"></span>)</span>
+            </button>
+        </div>
+    </div>
+    <script>
+        document.getElementsByTagName("html")[0].style.fontSize=document.documentElement.clientWidth/15+"px";
+
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('get','http://s2.zhishi.asia:3001/common/version',true);
+
+        xhr.send();
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState === 4){
+                if(xhr.status === 200){
+                    var data = JSON.parse(xhr.responseText);
+                    console.log(data);
+                    var d=data.d;
+                    var version=document.querySelectorAll('.version');
+                    var andr=document.querySelector('.andr');
+                    var iPh=document.querySelector('.iPh');
+                    for(var i=0,len=version.length;i<len;i++){
+                        version[i].innerHTML=d[0].v;
+                    }
+                    andr.onclick=function(){
+                        download('android');
+                    }
+                    iPh.onclick=function(){
+                        download('ios');
+                    }
+                    function download(mold){
+                        for(var i=0,len=d.length;i<len;i++){
+                            if(d[i].m===mold){
+                                window.location.href=d[i].p;
+                                count();
+                            }
+                        }
+                    }
+
+                    function count(){
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('get','http://s2.zhishi.asia:3001/common/downloadzhishi',true);
+                        xhr.send();
+                        xhr.onreadystatechange = function(){
+                            if(xhr.readyState === 4) {
+                                if (xhr.status === 200) {
+                                    var dataR = JSON.parse(xhr.responseText);
+                                    console.log(dataR.r);
+                                    return dataR.r;
+                                }
+                            }
+                        }
+                    }
+
+//                    var xhr = new XMLHttpRequest();
+//                    function opening(url){
+//                        xhr.open('get',url,true);
+//                        xhr.send();
+//                    }
+                }
+                else{
+                    window.alert("系统错误");
+                }
+            }
+        }
+    </script>
+</body>
+</html>

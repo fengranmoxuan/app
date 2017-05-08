@@ -1,0 +1,274 @@
+*{
+     padding:0;
+     margin:0;
+ }
+body,div,ul,li,p{
+    list-style: none;
+    font-family: "苹方", "Microsoft YaHei", "微软雅黑", arial, tahoma, \5b8b\4f53, sans-serif;
+}
+body{
+    padding-top:3.5rem;
+}
+a{
+    text-decoration: none;
+}
+
+@font-face {font-family: "iconfont";
+    src: url('../fonts/iconfont.eot?t=1491029314825'); /* IE9*/
+    src: url('../fonts/iconfont.eot?t=1491029314825#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/iconfont.woff?t=1491029314825') format('woff'), /* chrome, firefox */
+    url('../fonts/iconfont.ttf?t=1491029314825') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+    url('../fonts/iconfont.svg?t=1491029314825#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+    font-family:"iconfont" !important;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-tubiao20:before { content: "\e6f5"; }
+
+.icon-jishi:before { content: "\e645"; }
+
+.icon-fanhuijiantou:before { content: "\e626"; }
+
+.icon-appshusandian:before { content: "\e604"; }
+
+.icon-jishi1:before { content: "\e64d"; }
+
+
+/*头部*/
+.head{
+    box-sizing: border-box;
+    /*letter-spacing: 0.14rem;*/
+    z-index:9999;
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:2rem;
+    background: #393a3f;
+    color:white;
+    line-height: 2rem;
+    padding:0 0.6rem;
+    overflow: hidden;
+}
+.head span{
+    font-size:0.75rem;
+    display: inline-block;
+    padding-left:0.67rem;
+}
+.head .iconfont{;
+    font-size: 0.75rem;
+}
+.head .icon-tubiao20{
+    border-right:1px solid #2e2e32;
+    padding-right:0.67rem;
+}
+.icon-appshusandian{
+    float:right;
+}
+/*********APP下载*********/
+div.appdown{
+    box-sizing: border-box;
+    padding:0.56rem 0.6rem 0rem;
+    overflow: hidden;
+    z-index:9999;
+    position:fixed;
+    left: 0rem;
+    top:0rem;
+    width:100%;
+    height:3.5rem;
+    background: #fff;
+}
+div.appdown div.appicon{
+    width:3.1rem;
+    float: left;
+    color:#393a3f;
+}
+div.appdown div:nth-child(2){
+    width: 8rem;
+    padding:0.28rem 0;
+    float: left;
+    line-height: 1rem;
+}
+div.appdown div:nth-child(2) h4{
+    font-size: 0.58rem;
+    margin:0;
+}
+div.appdown div:nth-child(2) p{
+    font-size: 0.46rem;
+}
+div.appdown button{
+    float:right;
+    font-size: 0.58rem;
+    color:#fff;
+    background: #19ccc3;
+    width: 2.4rem;
+    height:1.1rem;
+    border-radius: 0.25rem;
+    border:none;
+    outline:none;
+    margin:0.63rem 0rem;
+}
+.main{
+    /*margin:0.25rem;*/
+    width:100%;
+    box-sizing: border-box;
+    height:100%;
+    background-color: #fbf9fe;;
+    font-size: 0.5rem;
+}
+.teacher{
+    padding:0.5rem;
+}
+.teacher_intro{
+    overflow: hidden;
+}
+.head_cover{
+    display: table-cell;
+    width:3.1rem;
+    float:left;
+    margin-right: 0.76rem;
+}
+.head_cover img{
+    width:3.1rem;
+    height:3.1rem;
+    border-radius: 0.2rem;
+}
+div.teacher_intro div.teacher_name{
+    padding:0.57rem 0;
+    line-height: 1rem;
+}
+div.teacher_intro div.teacher_name h4{
+    font-size: 0.6rem;
+}
+div.teacher_intro p{
+    font-size: 0.54rem;
+}
+div.introduce h4{
+    font-weight: normal;
+    font-size: 0.55rem;
+    color: #393a3f;
+}
+div.introduce{
+    /*float:left;*/
+    line-height:0.8rem;
+    font-size: 0.55rem;
+    color: #666;
+    padding-top:0.45rem;
+}
+
+/*选项卡*/
+.menu{
+    margin-top:0.2rem;
+    height:1.5rem;
+}
+.menu li{
+    font-size: 0.54rem;
+    color:#393a3f;
+    box-sizing: border-box;
+    width:25%;
+    height:1.5rem;
+    line-height:1.5rem;
+    text-align: center;
+    float:left;
+    /*padding:0.61rem;*/
+    border-bottom: 2px solid #ddd;
+    /*margin-right:0.1rem;*/
+    cursor: pointer;
+}
+.menu li.tabFocus{
+    color: #19ccc3;
+    border-bottom:2px solid #19ccc3;
+}
+.content{
+    width:100%;
+    box-sizing: border-box;
+    clear:left;
+    top:-1px;
+}
+.content li.tab{
+    width:100%;
+    display: none;
+}
+.content li.conFocus{
+    display:block;
+}
+
+li.tab li.view_tips{
+    height:3.6rem;
+    border-bottom:1px solid #ddd;
+    box-sizing: border-box;
+    width:100%;
+    padding:0.5rem 0.63rem;
+}
+li.view_tips a{
+    line-height: 1.3rem;
+}
+li.view_tips a h3{
+    font-weight:normal;
+    font-size:0.63rem;
+    color:#393a3f;
+}
+li.view_tips a span{
+    font-weight:normal;
+    font-size:0.5rem;
+    color:#888;
+}
+li.view_tips a span.time{
+    margin-left:1.3rem;
+}
+i.icon-jishi{
+    font-size: 0.5rem;
+    margin-right:0.14rem;
+}
+/**********导师训练班*********/
+li.tab li.apply_tips{
+    /*height:3.6rem;*/
+    box-sizing: border-box;
+    width:100%;
+    padding:0.5rem 0.63rem;
+    line-height:0.8rem;
+}
+div.timeTips,div.timeTips i{
+    color:#fe6c29;
+    font-size: 0.5rem;
+}
+div.timeTips time{
+    margin-left:0.43rem;
+}
+li.apply_tips h3{
+    font-weight:normal;
+    font-size:0.63rem;
+    margin-left:1rem;
+    color:#393a3f;
+}
+li.apply_tips p{
+    font-weight:normal;
+    font-size:0.5rem;
+    color:#888;
+    margin-left:1rem;
+}
+div.apply_price{
+    overflow: hidden;
+    margin-top:0.5rem;
+}
+div.apply_price span{
+    color:#fe6c29;
+    font-size:0.58rem;
+    margin-left:1rem;
+}
+div.apply_price button{
+    width:2.5rem;
+    height:1.1rem;
+    background: #fe6c29;
+    color:#fff;
+    font-size:0.58rem;
+    float: right;
+    border:none;
+    outline: none;
+    border-radius:0.1rem;
+}

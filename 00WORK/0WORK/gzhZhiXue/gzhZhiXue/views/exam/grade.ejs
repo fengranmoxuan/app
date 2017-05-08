@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/common.js"></script>
+    <link rel="stylesheet" href="./css/common.css">
+    <style>
+      .grade_head{
+          /*background-color: #19ccc3;*/
+          border:none
+      }
+      .grade_bao{
+          font-size: 0.7rem;;
+      }
+      .grade_detail{
+          margin-top:-0.1rem;
+          font-size: 0.5rem;
+          padding:0.4rem;
+      }
+      .grade_time{
+            color: #3b424c;
+            font-size: 0.5rem;
+          line-height: 0.8rem;;
+        }
+      .grade_fen{
+          position: relative;
+           width:100%;
+          height:8.8rem;
+        }
+      #canvas{
+          position: absolute;
+          top:0.1rem;
+          left:4.3rem;
+          color: #666666;
+      }
+      .grade_fen p:nth-child(1){
+          position: absolute;
+          top:1rem;
+          left:7.2rem;
+          padding:0.2rem;
+          color: #666666;
+      }
+      .grade_fen p:nth-child(2){
+          position: absolute;
+          top:2.2rem;
+          left:7rem;
+          font-size: 1.2rem;
+          color:#19ccc3;
+          padding:0.2rem;
+      }
+      .grade_fen p:nth-child(3){
+          position: absolute;
+          top:4.7rem;
+          left:7.2rem;
+          color:#3b424c;
+          padding:0.2rem;
+      }
+      .grade_fen p:nth-child(4){
+          position: absolute;
+          top:5.6rem;
+          left:7.2rem;
+          color:#3b424c;
+          padding:0.2rem;
+      }
+      .grade_probability{
+          width:100%;
+          height:1.8rem;
+      }
+      .grade_probability_inter{
+          height:1.8rem;
+          line-height: 0.8rem;
+      }
+        .grade_probability .grade_probability_1{
+           width:2rem;
+            float:left;
+            margin-left:1.5rem;
+        }
+      .grade_probability .shu{
+          width:1rem;
+          float:left;
+          color:#ebebeb;
+          margin-left:0.7rem;
+      }
+      .grade_probability .grade_probability_1 p:nth-child(1){
+       font-size:0.6rem;
+          color:#2dc7f4;
+      }
+      .grade_probability .grade_probability_1 p:nth-child(2){
+          font-size:0.5rem;
+          color:#3b424c;
+      }
+      .grade_probability .grade_probability_1 div{
+          border-left:4px solid  #ebebeb;
+          height:1rem;
+          margin-top:0.2rem;
+      }
+
+        /*成绩分析*/
+
+    </style>
+</head>
+<body>
+
+<div class="header grade_head">
+    <div class="header_project ">
+        <div class="header_left">
+            <div><img src="./img/back_03.png"> </div>
+        </div>
+        <div class="header_content grade_bao">
+            <div> 成绩报告</div>
+        </div>
+    </div>
+</div>
+<div class="grade_detail">
+    <div class="grade_time">
+        <p>生成成绩时间</p>
+        <p>time</p>
+    </div>
+    <div class="grade_fen">
+            <p>得分</p>
+             <p>98<span style="font-size: 0.5rem;">分</span></p>
+            <p>总分</p>
+            <p>100分</p>
+        <canvas width="500" height="500" id="canvas"></canvas>
+    </div>
+
+    <div class="grade_probability">
+       <div class="grade_probability_inter">
+           <div class="grade_probability_1">
+               <p>98%</p>
+               <p>正确率</p>
+           </div>
+           <div class="grade_probability_1  shu">
+               <div></div>
+           </div>
+           <div class="grade_probability_1">
+               <p>100%</p>
+               <p>击败考生</p>
+           </div>
+           <div class="grade_probability_1 shu">
+               <div></div>
+           </div>
+           <div class="grade_probability_1">
+               <p>48:00</p>
+               <p>做题用时</p>
+           </div>
+       </div>
+    </div>
+</div>
+
+
+<!--<div class="grade-rounde">-->
+    <!--<p style="padding-top:30px;">得分</p>-->
+    <!--<p class="grade-now"><span>{{gradeNow}}</span>分</p>-->
+    <!--<div style="margin:0 20px">-->
+        <!--<div class="row">-->
+            <!--<div class="col"><p>总分</p><p>{{gradeInit}}</p></div>-->
+            <!--<div class="col"><p>最高分</p><p>{{gradeM}}</p></div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<canvas width="200" height="200" class="grade-canvas"></canvas>-->
+<!--</div>-->
+</body>
+</html>
+<script>
+    var canvas=document.getElementById('canvas');
+    var ctx=canvas.getContext('2d');
+//    ctx.beginPath();
+//    ctx.arc(240, 240, 240, Math.PI * 3 / 4, Math.PI / 4, false);
+//    ctx.lineWidth = 6;
+//    ctx.strokeStyle = '#fff';
+//    ctx.lineCap = 'round';
+//    ctx.stroke();
+//    ctx.closePath();
+
+   ctx.beginPath();
+    var gr2 = ctx.createLinearGradient(20, 0, 180, 1);
+    gr2.addColorStop(0, 'rgba(255,255,255,0.1)');
+    gr2.addColorStop(0.5, 'rgba(255,255,255,1)');
+    gr2.addColorStop(1, 'rgba(255,255,255,0.1)');
+   ctx.fillStyle = gr2;
+   ctx.fillRect(20, 100, 160, 1);
+    ctx.closePath();
+
+   ctx.beginPath();
+    var gr =ctx.createRadialGradient(88, 100, 88, 100, 100, 100);
+//    gr.addColorStop(0, 'rgb(255,246,153)');
+//    gr.addColorStop(0.7, 'rgb(255,109,44)');
+//    gr.addColorStop(1, 'rgb(255,106,42)');
+    gr.addColorStop(0, 'rgb(0,245,255)');
+    gr.addColorStop(0.7, 'rgb(151,255,255)');
+    gr.addColorStop(1, 'rgb(30,144,255)');
+    ctx.strokeStyle = gr;
+    ctx.arc(240, 240, 240, Math.PI * 3 / 4, false);
+    ctx.lineWidth = 6;
+    ctx.lineCap = 'round';
+    ctx.stroke();
+    ctx.closePath();
+</script>
+

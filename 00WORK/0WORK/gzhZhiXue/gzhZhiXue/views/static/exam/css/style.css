@@ -1,0 +1,470 @@
+
+ /*exam*/
+ .chose .chose_answer{
+     width:12rem;
+     height:1.7rem;
+     line-height:1.7rem;
+     background-color: #FFFFFF;
+     margin:0.2rem auto;
+     /*border:1px solid #dddddd;*/
+     border-radius: 0.2rem;
+ }
+ .chose .chose_answer span{
+     display: inline-block;;
+     width:1.5rem;
+     height:100%;
+     text-align: center;
+ }
+ .chose .chose_answer p{
+     height:1.2rem;
+     line-height:1.2rem;
+     display: inline-block;
+     border-left:1px solid #dddddd;
+     padding-left:0.8rem;
+ }
+ .chose_bg{
+     background-color: #19ccc3;
+ }
+ .chose_border{
+     border:1px solid #19ccc3;
+ }
+ /*考试申请*/
+ .grade_bao{
+     font-size: 0.7rem;;
+ }
+ .apply_body{
+     width:100%;
+     height:100%;
+     background-color: #f4f4f4;
+     border-top:1px solid #f4f4f4;
+ }
+ .apply_content {
+     padding:0 0.5rem;
+     margin-top:0.5rem;
+     font-size: 0.5rem;
+     background-color: #ffffff;
+ }
+ .apply_content div{
+     border-bottom:1px solid #eeeeee;
+     height:2rem;
+     line-height:2rem;
+ }
+ .apply_content label{
+     display: inline-block;
+     color:#747474;
+     width:2rem;
+     padding:0 0.5rem;;
+ }
+ .apply_content input{
+     font-size: 0.5rem;
+     border:none;
+     color:#3b424c;
+     width:10rem;
+     height:1.5rem;
+     line-height:1.5rem;
+ }
+ .green_btn{
+     width:14rem;
+     margin:0 0.5rem;
+     height:2rem;
+     line-height: 2rem;
+     background-color: #19ccc3;
+     color: #ffffff;
+     font-size: 0.63rem;;
+     margin-top:0.5rem;
+     border-radius: 0.2rem;;
+ }
+ /*大赛详情*/
+ .detail_content{
+     padding:0 0.5rem;
+     margin-top:0.5rem;
+     font-size: 0.5rem;
+     background-color: #ffffff;
+ }
+ .detail_content .intro{
+    width:13rem;
+    font-size: 0.6rem;
+    height: 1.4rem;
+    line-height:1.4rem;
+    border-bottom :1px solid #eeeeee;
+    color:#3b424c;
+}
+ .detail_content .intro_con {
+     margin-top:0.2rem;
+     color:#9da0a5;
+     line-height: 1rem;
+    font-size:  0.5rem;
+     padding:0 0 0.5rem 0;
+
+ }
+ .detail_content .show{
+    display: none;
+ }
+ .detail_content .more{
+     width:3.5rem;
+     height:0.6rem;
+     margin:0 auto;
+     color:#19ccc3;
+
+ }
+ .toText{
+     width:14rem;
+     height:1.2rem;
+     padding:0.3rem 0.5rem;
+     margin-top:0.5rem;
+     font-size: 0.5rem;
+     background-color: #ffffff;
+     border-bottom:1px solid #ffffff;
+ }
+ .toText:after{
+     display:block;
+     height:0;
+     content: '';
+     clear:both;
+     overflow: hidden;
+ }
+ .toText p{
+     width:6.4rem;
+     height:1.2rem;
+     line-height: 1.2rem;
+     float:left;
+ }
+ .toText button{
+     width:3.5rem;
+     height:1.2rem;
+     font-size: 0.6rem;
+     color:#ffffff;
+     background-color: #19ccc3;
+     border:1px solid #c9cccf;
+     float:right;
+ }
+ .receD_content{
+     margin-top:0.5rem;
+     background-color: #ffffff;
+ }
+ .menu li{
+     width:3.8rem;
+     height:0.8rem;
+     line-height:0.8rem;
+     text-align: center;
+     float:left;
+     padding:0 0.5rem;
+     margin:0.5rem 0;
+     cursor: pointer;
+     font-size: 0.6rem;
+     color:#3b424c;
+     border-right:2px solid #dddddd;
+ }
+ .menu li:last-child{
+     border:none;
+ }
+ .menu li.tabFocus{
+     width:3.8rem;
+     height:0.8rem;
+     line-height:0.8rem;
+     text-align: center;
+     float:left;
+     margin:0.5rem 0;
+     cursor: pointer;
+     font-size: 0.6rem;
+     color:#19ccc3;
+     border-right:2px solid #dddddd;
+ }
+ .content {
+     width:100%;
+     clear:left;
+     top:-1px;
+     font-size: 0.5rem;
+ }
+ .content li{
+     display: none;
+ }
+.content .version_list{
+    border-top:1px solid #eeeeee;
+}
+.content .version_list:after{
+  display:block;
+    content: '';
+    height:0;
+    clear:both;
+    overflow: hidden;
+}
+.content .version_list .list_name{
+    width:2rem;
+    height:1.7rem;
+    padding:0.4rem;
+    float:left;
+}
+ .content .version_list .list_name .name{
+     color:#3b424c ;
+     font-size: 0.65rem;
+ }
+ .content .version_list .list_name .state{
+     color:#19ccc3 ;
+     font-size: 0.5rem;
+ }
+ .content .version_list .school{
+     width:7.5rem;
+     height:1.7rem;
+     padding:0.7rem 0.7rem 0 0.7rem;
+     float:left;
+     color:#9da0a5;
+     font-size: 0.5rem;
+ }
+ .content .version_list .this_grade{
+     width:2rem;
+     padding:1rem 0 0 0;
+     float:left;
+     color:#9da0a5;
+     font-size: 0.5rem;
+ }
+ .content .version_list .this_grade span{
+    color:#fd7999;
+ }
+ .content li.conFocus{
+     display:block;
+ }
+ /*模拟试题*/
+ .moNi_top{
+     padding:0.4rem;
+ }
+ .moNi_top_left{
+     width:12.5rem;
+     font-size: 0.6rem;
+     color:#3b424c;
+     float:left;
+ }
+ .moNi_top_right{
+     width:1.2rem;
+     height:1.2rem;
+     float:right
+
+ }
+ .moNi_top_right img{
+     width: 1rem;
+     height:1rem;
+ }
+ .moNi_button{
+     padding:0.4rem;
+     font-size:0.5rem; ;
+     color:#9da0a5;
+ }
+ .moNi_button_left{
+     padding-top:0.2rem;
+     width:6rem;
+     height:1rem;
+     float:left;
+ }
+ .moNi_button_right{
+     padding-top:0.2rem;
+     width:3rem;
+     height:1rem;
+     float:left
+ }
+ /*赛前辅导*/
+
+ li.coach{
+     width:100%;
+     padding: 0.35rem;
+     box-sizing: border-box;
+     overflow: hidden;
+     /*background: red;*/
+ }
+ div.info{
+     width:11rem;
+     float: left;
+     padding:0 0 0 0.4rem;
+ }
+ div.info h4{
+     font-weight: normal;
+     color: #3b424c;
+     font-size:0.63rem;
+     margin:0.3rem;
+ }
+ div.info h4 span{
+     color: #19ccc3;
+ }
+ div.info p{
+     padding:0 0.3rem ;
+     color: #9da0a5;
+     font-size:0.5rem;
+     margin-bottom: 0.25rem;
+ }
+ /************购买按钮*********/
+ div.buybox{
+     height:2rem;
+     box-sizing: border-box;
+     float: right;
+     overflow: hidden;
+     display: table-cell;
+     vertical-align: middle;
+     margin:1.3rem 0rem;
+ }
+ div.buybox input {
+     width: 3rem;
+     height: 1.1rem;
+     font-size: 0.54rem;
+     color: #fff;
+     background: #fd9b43;
+     border-radius: 0.15rem;
+     border: none;
+     outline: none;
+     margin-right: 0.2rem;
+     float: right;
+ }
+/*大赛报名及参赛记录*/
+
+ .race_title{
+     width:9.72rem;
+     margin:0 auto;
+     padding-top:0.4rem;
+ }
+ .race_title li{
+     text-align: center;
+     display: inline-block;
+     width:4.5rem;
+     height:1.3rem;
+     line-height:1.3rem;
+     font-size: 0.7rem;
+ }
+ .focus_race{
+    border-radius:0.5rem;
+     background-color: #e5e5e5;
+ }
+ .race_bod{
+     width:100%;
+     background-color: #f2f2f2;
+     border-top:1px solid #f2f2f2;
+ }
+ .race_apply_content{
+     margin:0.5rem 0;
+
+ }
+ .race_apply_content {
+     width:100%;
+     clear:left;
+     top:-1px;
+     font-size: 0.5rem;
+ }
+ .race_apply_content li{
+     display: none;
+ }
+ .race_apply_content li.conFocus{
+     display:block;
+ }
+ .daSai{
+     width:13rem;
+     height:4.2rem;
+     margin:0.5rem;
+     background-color: #ffffff;
+     padding:0.2rem 0.5rem;
+     border:1px solid #ffffff;
+     border-radius: 0.2rem;
+ }
+ .daSai .top_all{
+   margin:0.2rem 0;
+ }
+ .top_left{
+     display: inline-block;
+     width:10.5rem;
+     line-height: 1rem;
+ }
+.top_left .name{
+    font-size: 0.6rem;
+    color:#3b424c;
+}
+.top_left .stop_time{
+    color:#9da0a5;
+    font-size: 0.5rem;
+}
+.top_right{
+    width:2rem;
+    display: inline-block;
+    font-size: 0.5rem;
+    color:#19ccc3;
+}
+.top_right .clock{
+    padding-left:0.3rem;
+}
+.button_all{
+    font-size: 0.5rem;
+    width:13rem;
+    height:1.2rem;
+    line-height:1.2rem;
+    border-top:1px solid #d5dde0;
+}
+ .button_all .button_left{
+     width:7rem;
+     height:1.8rem;
+     line-height:1.8rem;
+     float:left;
+     color:#9da0a5
+ }
+ .button_all .button_left span{
+     font-size: 0.6rem;
+     padding:0.2rem;
+    color:#f26c6c;
+ }
+ .button_all .button_right{
+     width:3.6rem;
+     height:1.2rem;
+     text-align: center;
+     float:right;
+     color:#ffffff;
+     margin:0.4rem;
+     background-color:#19ccc3; ;
+ }
+ .button_all .button_right a{
+     text-decoration: none;
+     color:#ffffff;
+ }
+ .text_head_bg{
+     height:3.5rem;
+     border-bottom: 1px solid #f2f2f2;
+ }
+
+ /*考试中*/
+
+
+/*  IE10 Windows Phone 8 Fixes*/
+
+ .swiper-container {
+     height: 13rem;
+     width: 100%;
+     overflow: hidden;
+     /*height: 277px;*/
+     /*width: 100%;*/
+     /*overflow: hidden;*/
+ }
+ .text-type:after{
+     content:'';
+     height:0;
+     display:block;
+     clear:both;
+     overflow: hidden;
+ }
+ .outer{
+     float: left;
+ }
+ .swiper-slide {
+     float: left;
+     -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+     box-sizing: content-box;
+ }
+ #slider{
+     width:15rem;
+     overflow: hidden;
+ }
+
+ /*#slider{*/
+     /*width:3000px;*/
+ /*}*/
+ .foot_bg{
+     position: fixed;
+     left: 0;
+     bottom: 0;
+     width:15rem;
+     height:9rem;
+     background-color: #f2f2f2;
+ }

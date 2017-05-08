@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1,minimum-scale=1,maximum-scale=1" />
+    <title>启悦书柜</title>
+    <link rel="stylesheet" href="wx_static/css/public.css">
+    <link rel="stylesheet" href="wx_static/css/style1.css"/>
+    <link rel="stylesheet" href="wx_static/css/baoliu.css"/>
+    <script charset="utf-8" src="wx_static/js/zepto.min.js"></script>
+    <script charset="utf-8" src="wx_static/js/book.js"></script>
+    <script charset="utf-8" src="wx_static/js/state.js"></script>
+</head>
+<body class="myde">
+    <div class="weixin_header">
+        <span>《小狐狸》</span>
+    </div>
+    <div class="weixin_content">
+        <div class="weixin-bg"><img src="wx_static/img/weixi_bg1.png" class="weixin_content-bg"></div>
+        <div class="weixin-codes"><img src="wx_static/img/codes.png" class="weixin_content-codes"></div>
+        <div class="weixin-font">
+            <span>哈哈哈 这是非常非常有趣的事情</span>
+            <span>哈哈哈 这是非常非常有趣的事情</span>
+        </div>
+    </div>
+    <script>
+    console.log(location.href)
+    console.log(location.search)
+    console.log(location.pathname)
+        var locations=location.search;
+        var id=locations.substr(5)
+        console.log(id)
+    </script>
+</body>
+</html>

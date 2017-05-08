@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1,minimum-scale=1,maximum-scale=1" />
+	<title>启悦书柜</title>
+	<!--<link rel="stylesheet" href="css/weui.css"/>-->
+	<!--<link rel="stylesheet" href="css/weui2.css"/>-->
+	<link rel="stylesheet" href="wx_static/css/style1.css"/>
+
+	<script charset="utf-8" src="wx_static/js/zepto.min.js"></script>
+	<script charset="utf-8" src="wx_static/js/book.js"></script>
+</head>
+<body style="background-color: #796565">
+
+<document style="display:block" id="page0">
+	<div class="book-header">
+		<input class="book-head-input" type="text" placeholder="请输入你要借阅的绘本"  id="search" />
+	</div>
+	<ul class="book-main" id="searchBook"></ul>
+	<ul  id="mainBook">
+		<!--<li class="book-main-li clear">-->
+		<!--<p class="book-main-li-title">《小红帽》</p>-->
+		<!--</li>-->
+	</ul>
+</document>
+
+	<document1 style="display:none" id="page1">
+		<div class="weixin_header" >
+			<button style="width:1.6rem;height: 0.8rem;background: #fff" onclick="router1();">返回</button>
+			<span>《小狐狸》</span>
+		</div>
+		<div class="weixin_content">
+			<div class="weixin-bg"><img src="wx_static/img/weixi_bg1.png" class="weixin_content-bg"></div>
+			<div class="weixin-codes"><img src="wx_static/img/codes.png" class="weixin_content-codes"></div>
+			<div class="weixin-font">
+				<span>哈哈哈 这是非常非常有趣的事情</span>
+				<span>哈哈哈 这是非常非常有趣的事情</span>
+			</div>
+		</div>
+	</document1>
+<script>
+	$.ajax({
+				type: 'GET',
+				url: 'http://app.bzby365.com:8001/a/books',
+				data: {limit:60,skip:0},
+				dataType: 'json',
+				success: function(data){
+					var bookList=data.data.data;
+					console.log( bookList);
+					var html='';
+					$.each(bookList,function(index,data){
+						html+='<li class="book-main-li clear"> <p class="book-main-li-title">《'+data.name+'》</p> </li>'
+					})
+					$('#mainBook').append(html);
+					for(i=0; i<bookList.length; i++){
+						$('.book-main-li')[i]._id = bookList[i];
+
+						$('.book-main-li')[i].onclick = function () {
+
+								router('page1',{video:this._id});
+//								window.location.href = "weixin1.html?_id="+ this._id;
+							console.log(window.location.href)
+							};
+					}
+					//绘本搜索
+					var str1='',str2='',ind=0;
+                      $('#search').change(function(){
+						  ind++;
+						  arr=[];
+						  var txt=$('.book-head-input').val();
+						  str1=txt;
+						  if(ind>1){
+							  if(!(str1==str2)){
+								  console.log(txt)
+								  $("#searchBook").empty()
+							  }
+						  }
+						  if($.trim(txt)!=""){
+							  $.each(bookList,function(index,data){
+								  if(data.name.search(txt) != -1){
+									  arr.push(data);
+									  html='<li class="book-main-li clear"> <p class="book-main-li-title" style="color: red">《'+data.name+'》</p> </li>';
+									  $('#searchBook').prepend(html);
+								  }
+							  })
+							  str2=str1;
+						  }else{
+							  arr=[];
+							  $("#searchBook").empty()
+						  }
+
+						  console.log(arr)
+
+						  for(i=0; i<arr.length; i++){
+							  $('.book-main-li')[i]._id = arr[i];
+
+							  $('.book-main-li')[i].onclick = function () {
+
+								  router('page1',{video:this._id});
+								  console.log(window.location.href)
+							  };
+						  }
+
+					  })
+				},
+				error: function(xhr, type){
+					alert('Ajax error!')
+				}
+			})
+
+	function router(page, parameter){
+		var node = document.getElementById(page);
+		$('#page1').css({'display':'block'}).siblings().css({'display':'none'})
+
+		$('.weixin_header span').text('《'+parameter.video.name+'》')
+		$('.weixin-font span').html(parameter.video.name)
+		console.log(parameter)
+	}
+
+	function router1(){
+		$('#page0').css({'display':'block'}).siblings().css({'display':'none'})
+	}
+
+
+</script>
+</body>
+</html>

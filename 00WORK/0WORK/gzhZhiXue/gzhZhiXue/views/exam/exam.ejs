@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=no, width=device-width" name="viewport">
+    <!--<script src="./js/timu.js"></script>-->
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/zepto.min.js"></script>
+    <script src="./js/touch.js"></script>
+    <script src="./js/common.js"></script>
+
+    <!--<script src="./js/request.js"></script>-->
+</head>
+<body>
+<div class="head_fix">
+    <div class="header">
+        <div class="header_project">
+            <div class="header_left">
+                <div><img src="./img/coin1_03.jpg" class="clock"></div>
+                <div class="time"></div>
+            </div>
+            <div class="header_content">
+                <div> 考试中</div>
+            </div>
+            <div class="header_right" id="button">
+                <div>交卷</div>
+            </div>
+        </div>
+    </div>
+    <div class="header_project">
+        <audio>
+            <source src="http://app.bzby365.com:8001/static/book/582d1afb4406b7740f06602a/audio/14793643890024.mp3" type="audio/ogg" />
+        </audio>
+        <div class="nav_left">
+            <img src="./img/coin1_07.jpg" class="play">
+            <span class="audio">点击播放</span>
+        </div>
+        <div class="nav_right">
+            1/10
+        </div>
+    </div>
+</div>
+<div class="text_head_bg"></div>
+    <div class="swiper-container"  >
+        <div class="text_type " id="slider">
+        </div>
+    </div>
+<div class="danchuang">
+    <div class="tanchuang">
+        <div class="lingqu">你还有题目未作答，确认交卷？</div>
+        <div class="lingqu" style="display:none">你已经做完所有题目，确认交卷？</div>
+        <div class="queren" >取消</div><div class="ok">确认</div>
+    </div>
+</div>
+<div class="footer" id="footer">
+    <div class="footer_in">
+        <div class="ziMu">
+            <input type="button" value="a">
+            <input type="button" value="b">
+            <input type="button" value="c">
+            <input type="button" value="d">
+            <input type="button" value="e">
+            <input type="button" value="f">
+            <input type="button" value="g">
+            <input type="button" value="h">
+            <input type="button" value="i">
+            <input type="button" value="j">
+            <input type="button" value="k">
+            <input type="button" value="l">
+            <input type="button" value="m">
+            <input type="button" value="n">
+            <input type="button" value="'">
+            <input type="button" value="o">
+            <input type="button" value="p">
+            <input type="button" value="q">
+            <input type="button" value="r">
+            <input type="button" value="s">
+            <input type="button" value="t">
+            <input type="button" value="-">
+            <input type="button" value="u">
+            <input type="button" value="v">
+            <input type="button" value="w">
+            <input type="button" value="x">
+            <input type="button" value="y">
+            <input type="button" value="z">
+        </div>
+        <div class="deLive">
+            <input type="button" value="大写">
+            <input type="button" value="空格" id="free">
+            <input type="button" value="删除" id="delete">
+        </div>
+    </div>
+</div>
+<div id="openopen" style="display:none"><%= openid %></div>
+<script src="./js/exam.js"></script>
+</body>
+</html>
+<script>
+    $('.audio').bind('click',function(){
+        $('audio').play()
+    })
+//    function PlayVideo(){
+//        var v = document.getElementsByTagName("audio")[0];
+//        v.play();
+//    }
+</script>
+<!--<script>-->
+    <!--/*主函数要使用的函数，进行声明*/-->
+    <!--var clock=new clock();-->
+    <!--/*指向计时器的指针*/-->
+    <!--var timer;-->
+    <!--/*主函数就在每1秒调用1次clock函数中的move方法即可*/-->
+    <!--timer=setInterval("clock.move()",1000);-->
+    <!--function clock(){-->
+        <!--/*s是clock()中的变量，非var那种全局变量，代表剩余秒数*/-->
+        <!--this.s=3599;-->
+        <!--this.move=function(){-->
+            <!--/*输出前先调用exchange函数进行秒到分秒的转换，因为exchange并非在主函数window.onload使用，因此不需要进行声明*/-->
+            <!--document.querySelector(".time").innerHTML=exchange(this.s);-->
+            <!--/*每被调用一次，剩余秒数就自减*/-->
+            <!--this.s=this.s-1;-->
+            <!--/*如果时间耗尽，那么，弹窗，使按钮不可用，停止不停调用clock函数中的move()*/-->
+            <!--if(this.s<0){-->
+                <!--console.log("时间到");-->
+                <!--clearTimeout(timer);-->
+            <!--}-->
+        <!--}-->
+    <!--}-->
+    <!--function exchange(time){-->
+        <!--/*javascript的除法是浮点除法，必须使用Math.floor取其整数部分*/-->
+        <!--this.m=Math.floor(time/60);-->
+        <!--/*存在取余运算*/-->
+        <!--this.s=(time%60);-->
+        <!--this.text=this.m+":"+this.s+"";-->
+        <!--/*传过来的形式参数time不要使用this，而其余在本函数使用的变量则必须使用this*/-->
+        <!--return this.text;-->
+    <!--}-->
+<!--</script>-->
+
+
+
+
+
+
+
+
+
+
+

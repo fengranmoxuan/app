@@ -1,0 +1,231 @@
+/**reset**/
+html, body, header, section, footer, div, ul, ol, li, img, a, span, em, del, legend, center, strong, var, fieldset, form,
+label, dl, dt, dd, cite, input, hr, time, mark, code, figcaption, figure, textarea, h1, h2, h3, h4, h5, h6, p
+{
+    margin: 0;
+    border: 0;
+    padding: 0;
+    font-style: normal;
+    color: #323232
+}
+
+html, body
+{
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-user-select: none;
+    font-family: "苹方", "Microsoft YaHei", "微软雅黑", arial, tahoma, \5b8b\4f53, sans-serif;
+    /*background-color: #fff*/
+}
+
+nav, article, aside, details, main, header, footer, section, fieldset, figcaption, figure
+{
+    display: block
+}
+
+img, a, button, em, del, strong, var, label, cite, small, time, mark, code, textarea
+{
+    display: inline-block
+}
+ol, ul {
+    list-style: none
+}
+input, button, textarea
+{
+    border: 0;
+    margin: 0;
+    padding: 0;
+    -webkit-appearance: none;
+    outline: 0;
+    background-color: rgba(0, 0, 0, 0)
+}
+span{
+    display: inline-block;
+}
+a:active, a:hover {
+    outline: 0
+}
+
+a,
+a:visited {
+    text-decoration: none
+}
+
+label,
+.wordWrap {
+    word-wrap: break-word;
+    word-break: break-all
+}
+.ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.ellipsis-2 {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal!important;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical
+}
+.ellipsis-3 {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal!important;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical
+}
+.clearfix:after {
+    content: ' ';
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0
+}
+.fr {
+    float: right
+}
+
+.fl {
+    float: left
+}
+/**********头部*********/
+header{
+    height:1.75rem;
+    line-height: 1.75rem;
+    width:100%;
+    font-size: 0.53rem;
+    box-sizing: border-box;
+    border-bottom:1px solid #e3dcdf;
+}
+ul{
+    height:100%;
+    width:100%;
+}
+header ul li{
+    width:50%;
+    height:100%;
+    text-align: center;
+    box-sizing: border-box;
+}
+li.active{
+    color:#03a9f4;
+    border-bottom:2px solid #03a9f4;
+}
+.display-box {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex
+}
+
+.box-orient-v {
+    -webkit-box-orient: vertical;
+    -webkit-flex-flow: column;
+    flex-flow: column
+}
+
+.box-orient-h {
+    -webkit-box-orient: horizontal;
+    -webkit-flex-flow: row;
+    flex-flow: row
+}
+
+.box-flex-1 {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1
+}
+/******分类******/
+ul.head{
+    background: #f0f0f0;
+    font-size: 0.53rem;
+    display: -webkit-flex;
+    display: flex;
+}
+ul.head:nth-child(1){
+    padding-top:0.1rem;
+}
+ul.head:nth-child(2){
+    padding-bottom:0.1rem;
+}
+ul.head li{
+    -webkit-flex:1;
+    flex: 1;
+    border: 1px solid #e3dcdf;
+    background: #fff;
+    border-radius: 0.2rem;
+    text-align: center;
+    padding:0.49rem 0.22rem;
+    text-align: center;
+    margin:0.1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+/******视音频列表******/
+.list{
+    padding:0.25rem 0.42rem;
+    border-bottom: 1px solid #e3dcdf;
+    background: white;
+    box-sizing: border-box;
+}
+.pic{
+    box-sizing: border-box;
+    width:3rem;
+    height:1.8rem;
+    margin-right:0.64em;
+    border-radius: 0.2rem;
+}
+.list dt{
+    font-size: 0.53rem;
+}
+.list dd{
+    font-size:0.46rem;
+    color:#8e8387;
+    margin-top:0.46rem;
+    width:200px;
+}
+/**字体图标**/
+@font-face {font-family: "iconfont";
+    src: url('../font/iconfont.eot?t=1492658279544'); /* IE9*/
+    src: url('../font/iconfont.eot?t=1492658279544#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../font/iconfont.woff?t=1492658279544') format('woff'), /* chrome, firefox */
+    url('../font/iconfont.ttf?t=1492658279544') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+    url('../font/iconfont.svg?t=1492658279544#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+    font-family:"iconfont" !important;
+    font-size:1rem;
+    color: #ff6568;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: inline-block;
+    margin-right:0.8rem;
+    padding-top:0.4rem;
+}
+
+.icon-iconfontcolor96:before { content: "\e6d2"; }
+
+.icon-bofang:before { content: "\e630"; }
+
+/*********网络错误********/
+div.err{
+    text-align: center;
+    font-size: 0.63rem;
+    text-align: center;
+    padding-top: 8rem;
+}
+div.err img{
+    width:5.56rem;
+    height:4.9rem;
+}
+div.err p{
+    color: #c8c8c8;
+}

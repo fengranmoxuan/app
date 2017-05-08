@@ -1,0 +1,233 @@
+body,html,div,ul,li,p,span,h1,h2,h3,h4,h5,h6,a{
+    padding:0;
+    margin:0;
+    list-style: none;
+    font-family: "苹方", "Microsoft YaHei", "微软雅黑", arial, tahoma, \5b8b\4f53, sans-serif;
+}
+body{
+    background-color: #f2f2f2;
+}
+a{
+    text-decoration: none;
+    display: inline-block;
+    color:#3b424c;
+}
+a,img,button,input,textarea,li{-webkit-tap-highlight-color:rgba(255,255,255,0);}
+/*弹窗*/
+.danchuang{
+    top:0;
+    left:-0.5rem;
+    width:100%;
+    height:300rem;
+    display:none;
+    overflow:hidden;
+    position:fixed;
+    background:rgba(0,0, 0, 0.3);
+    font-size: 0.5rem;
+    padding:0.5rem;
+    z-index:10;
+}
+.tanchuang{
+    width: 12rem;
+    height:6rem;
+    background-color: #FFFFFF;
+     margin:7rem  auto;
+    z-index: 666666;
+    border-radius: 0.5rem;
+    padding:1rem 0;
+}
+.tanchuang .lingqu{
+    width: 10rem;
+    height: 4rem;
+    background-color: #fff;
+    font-size: 0.5rem;
+    color: #666666;
+    text-align: center;
+    line-height: 4rem;
+    margin:0 auto;
+}
+.tanchuang .queren{
+    margin:0.3rem;
+    display: inline-block;
+    width: 5.5rem;
+    height: 1.6rem;
+    background-color:  #ffffff;
+    font-size: 0.5rem;
+    color: #666666;
+    text-align: center;
+    line-height: 1.6rem;
+    border:1px solid #dfdfdf;
+    border-radius: 0.2rem;
+}
+.tanchuang .ok{
+    display: inline-block;
+    width: 5.5rem;
+    height: 1.6rem;
+    background-color:  #19ccc3;
+    font-size: 0.5rem;
+    color: #ffffff;
+    text-align: center;
+    line-height: 1.6rem;
+    border-radius: 0.2rem;
+}
+/*底部*/
+.footer{
+    position: fixed;
+    left:0;
+    bottom: 0;
+    padding:0 0.4rem 0 0.4rem;
+    display: none;
+    background-color: #ffffff;
+}
+.footer_in .ziMu input{
+    display: inline-block;
+    width:1.77rem;
+    background-color: #ffffff;
+    height:1.77rem;
+    border:1px solid #dddddd;
+    border-radius: 0.2rem;
+    margin-top:0.2rem;
+}
+.footer_in .deLive input{
+    display: inline-block;
+    width:4.5rem;
+    background-color: #ffffff;
+    height:1.77rem;
+    border:1px solid #dddddd;
+    border-radius: 0.2rem;
+    margin-top:0.2rem;
+}
+
+/*头部*/
+
+.head_fix{
+    position: fixed;
+    top:0;
+    left:0;
+}
+.header{
+    width:100%;
+    height:2rem;
+    border-bottom: 1px solid #dddddd;
+    font-size: 0.5rem;
+    background-color: #ffffff;
+}
+.header_project{
+    font-size: 0.5rem;
+    padding:0.3rem 0.4rem 0.2rem  0.4rem;
+    background-color: #ffffff;
+}
+.header_project .header_left {
+    float:left;
+    width:2rem;
+    padding:0 0.3rem;
+}
+.header_project .header_left .back {
+    margin:0.4rem 0;
+}
+.header_project .header_left .back img{
+   width:0.4rem;
+    height:0.7rem;
+}
+
+.header_project .header_left .clock{
+    width:0.7rem;
+    height:0.7rem;
+    margin:0 0.2rem;;
+}
+.clock img{
+    width:0.7rem;
+    height:0.7rem;
+  ;
+}
+.header_project .header_left .time{
+    display:inline-block;
+    width:0.7rem;
+    color:#b4b4b4;
+}
+.header_project .header_content{
+    text-align: center;
+    line-height:1.25rem;;
+    float:left;
+    width:9.5rem;
+    height:1.25rem;
+}
+.header_project .header_right{
+    text-align: center;
+    float:left;
+    width:2rem;
+    height:1.25rem;
+    background-color:#19ccc3 ;
+    line-height:1.25rem;
+    border-radius: 0.1rem;
+    color:#ffffff;
+}
+.nav_left{
+    float:left;
+}
+.nav_left .play{
+    width:0.95rem;
+    height:0.95rem;
+    vertical-align: middle;
+}
+.nav_left span{
+    display: inline-block;
+    margin:0.1rem 0.2rem;
+
+}
+.nav_right{
+    float:right;
+}
+.header_project:after{
+    content:'';
+    display:block;
+    height:0;
+    overflow: hidden;
+    clear: both;
+}
+/*考题*/
+.text_type{
+    width:100%;
+    height:100%;
+    border-top:1px solid #f2f2f2;
+    background-color:#f2f2f2;
+    font-size: 0.5rem;;
+    margin-bottom:10rem ;
+}
+
+.text_one{
+    width:10rem;
+    background-color: #FFFFFF;
+    border-top:1px solid #FFFFFF;
+    border-radius: 0.5rem;
+    margin:2rem 1.5rem;;
+    padding:2rem 1rem;
+}
+.text_chose{
+    width:10rem;
+    background-color: #FFFFFF;
+    border-top:1px solid #FFFFFF;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin:0.5rem 1.5rem 0 1.5rem;
+}
+.text_one p{
+    height:2rem;line-height:2rem;
+    text-align: center;
+}
+.text_one div{
+    text-align: center;
+    height:2rem;
+}
+.text_one input{
+    border:none;
+    border-bottom:1px solid #3b424c;
+    width:1rem;
+    /*border-right:0.2px solid #3b424c;*/
+    /*border-left:0.2px solid #3b424c;*/
+
+}
+/*输入*/
+/*.text_one input {*/
+    /*border:none*/
+/*}*/

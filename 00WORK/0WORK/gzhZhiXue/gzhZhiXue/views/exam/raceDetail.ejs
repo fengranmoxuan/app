@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>大赛详情</title>
+    <script src="./js/zepto.min.js"></script>
+    <script src="./js/common.js"></script>
+    <meta content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=no, width=device-width" name="viewport">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+</head>
+<body>
+<div class="header grade_head">
+    <div class="header_project ">
+        <div class="header_left">
+            <div class="back"><img src="./img/back_03.png"></div>
+        </div>
+        <div class="header_content grade_bao">
+            <div> 大赛详情</div>
+        </div>
+    </div>
+</div>
+<div class="apply_body">
+    <div class="detail_content">
+        <p class="intro">大赛活动说明</p>
+        <div class="intro_con">
+            <p>1.活动说明：全能五星”小学生英语竞赛是为培养小学生学习英
+                语的兴趣和信心，提高英语听、说、读、写应用水平，逐步掌
+                握社会交际的基本技能，提高文明素养、英语口语演讲水平和
+                语言表达能力而举办。</p>
+            <p>2.活动说明：全能五星”小学生英语竞赛是为培养小学生学习英
+                语的兴趣和信心，提高英语听、说、读、写应用水平，逐步掌
+                握社会交际的基本技能，提高文明素养、英语口语演讲水平和
+                语言表达能力而举办。</p>
+            <div class="more">展开查看更多</div>
+            <div class="show">3.活动说明：全能五星”小学生英语竞赛是为培养小学生学习英
+                语的兴趣和信心，提高英语听、说、读、写应用水平，逐步掌
+                握社会交际的基本技能，提高文明素养、英语口语演讲水平和
+                语言表达能力而举办。
+                <div class="up" style="color:green">收起</div>
+            </div>
+        </div>
+    </div>
+    <div class="toText">
+        <p> 距考试还剩：3天14小时</p>
+        <button class="btnText"><a href="exam">立即考试</a></button>
+    </div>
+    <div class="receD_content">
+        <ul class="menu">
+            <li class="tabFocus">报名名单</li>
+            <li>模拟试题</li>
+            <li>赛前辅导</li>
+        </ul>
+        <ul class="content">
+            <li class="conFocus">
+                <div class="version_list">
+                    <div class="list_name">
+                        <div class="name">张小花</div>
+                        <div class="state">未考试</div>
+                    </div>
+                    <div class="school">上海机械小学</div>
+                    <div class="this_grade">成绩:<span>0</span></div>
+                </div>
+                <div class="version_list">
+                    <div class="list_name">
+                        <div class="name">张小花</div>
+                        <div class="state">未考试</div>
+                    </div>
+                    <div class="school">上海机械小学</div>
+                    <div class="this_grade">成绩:<span>0</span></div>
+                </div>
+            </li>
+            <li class="moNi">
+                <!--<div class="version_list">-->
+                    <!--<div class="moNi_top">-->
+                        <!--<div class="moNi_top_left">-->
+                            <!--<p>2017年“全能五星”小学生英语竞赛模拟</p>-->
+                            <!--<p> 考题01</p>-->
+                        <!--</div>-->
+                        <!--<div class="moNi_top_right"><img src="./img/edit_03.jpg"> </div>-->
+                    <!--</div>-->
+                    <!--<div class="moNi_button">-->
+                        <!--<div class="moNi_button_left"> 难度5</div>-->
+                        <!--<div class="moNi_button_right">已做过一次</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            </li>
+            <li>
+                <div class="version_list">
+                    <div class="info">
+                        <h4>
+                            2017年“全能五星”小学生英语竞赛 赛前辅导<span>(宁波市)</span>
+                        </h4>
+                        <p>地址：<span>宁波市长安路星海大厦11层1022室小鸭 鸭英语辅导中心</span></p >
+                        <p>开课时间：<span>2017年2月8日上午09:00</span></p >
+                    </div>
+                    <div class="buybox"><input type="button" name="" value="购买"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div id="openopen" style="display:none"><%= openid %></div>
+</div>
+
+</body>
+</html>
+<script>
+    function demo(aa,bb,cc){
+        $(aa).click(function(){
+            var index = $(this).index();
+            $(bb).eq(index).show().siblings().hide();
+            $(aa).eq(index).addClass(cc).siblings().removeClass(cc);
+        });
+    }
+    demo('.menu li','.content li','tabFocus');
+    $(function(){
+        $('.more').click(function(){
+            $(this).css('display',"none")
+            $('.show').css('display','block')
+            $('.up').css('display','block')
+        })
+        $('.up').click(function(){
+            $(this).css('display',"none")
+            $('.show').css('display','none')
+            $('.more').css('display','block')
+        })
+        //读取
+        var str = sessionStorage.obj;
+        //重新转换为对象
+        var  obj = JSON.parse(str);
+        var examsTests=obj.examsTest;
+            $.each(examsTests,function(index,data){
+              console.log(data)
+                  $('.moNi').append(
+                    "<div class='version_list'>"+
+                    "<div class='moNi_top'>"+
+                    "<div class='moNi_top_left'>"+
+                    "<p></p>"+
+                    "<p>"+data._id+"</p>"+
+                    "</div>"+
+                    "<div class='moNi_top_right'><img src='./img/edit_03.jpg'> </div>"+
+                    "</div>"+
+                    "<div class='moNi_button'>"+
+                    "<div class='moNi_button_left'>"+ "难度5"+"</div>"+
+                    "<div class='moNi_button_right'>"+"已做过一次"+"</div>"+
+                    "</div>"+
+                    " </div>"
+              )
+        })
+        $(".btnText").on("click",function(){
+            var texts=JSON.stringify(obj.exams);
+            console.log(texts)
+            sessionStorage.this_exam = texts;
+        })
+    })
+
+</script>

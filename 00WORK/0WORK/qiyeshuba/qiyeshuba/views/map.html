@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head >
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<meta content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=no, width=device-width" name="viewport">
+	<link rel="stylesheet" href="./book-css/public.css">
+	<!--<link rel="stylesheet" href="./book-css/style.css">-->
+	<link rel="stylesheet" href="./book-css/weui.css"/>
+	<link rel="stylesheet" href="./book-css/weui2.css"/>
+
+	<script src="./book-js/zepto.min.js"></script>
+	<script src="./book-js/book.js"></script>
+	<script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp&key=DLDBZ-OK6RW-3FSRD-RMUUR-43DVV-TIBNA&libraries=convertor"></script>
+	<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="/wxapi.js"></script>
+	<style>
+		.map{
+			width: 100%;
+			height: 2.6rem;
+			text-align: center;
+			border-bottom: 1px solid #d2d2d2;
+			background-color: #fff;
+		}
+		.search{
+			width: 60%;
+			height: 1.4rem;
+			font-size: 0.48rem;
+			padding: 0.1rem 0.3rem;
+			margin-top: 0.5rem;
+			text-align: center;
+		}
+		#container {
+			width: 100%;
+			height: 30rem;
+		}
+
+		.map_but{
+			width:3rem;
+			height: 1.4rem;
+			margin-left: 0.4rem;
+		}
+
+	</style>
+</head>
+<body onload="init()" style="height: 100%">
+<div id="openopen" style="display: none"><%= openid %></div>
+<div class="map">
+	<input id="address" class="search" type="textbox" value="" placeholder="请输入你需要借阅的书名">
+	<button class="map_but" onclick="codeAddress()">search</button>
+</div>
+
+<div id="container" style="height: 98%"></div>
+<script>
+	window.onload=function(){
+		var id = document.getElementById('openopen');
+		var openid = id.innerText;
+		console.log('openid-->',openid);
+
+		window.wxapi.config();
+	}
+
+	wx.ready(function(){
+
+		wx.checkJsApi({
+			jsApiList: [
+				'getLocation'
+			],
+			success: function (res) {
+//				console.log(res)
+				if (res.checkResult.getLocation == false) {
+					alert('你的微信版本太低，不支持微信JS接口，请升级到最新的微信版本！');
+					return;
+				}else{
+					wx.getLocation({
+						success: function (res) {
+//							console.log(res)
+//							alert(JSON.stringify(res))
+							var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+							var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+							var speed = res.speed; // 速度，以米/每秒计
+							var accuracy = res.accuracy; // 位置精度
+
+
+							var center = new qq.maps.LatLng(latitude,longitude);
+							map = new qq.maps.Map(document.getElementById('container'),{
+								center: center,
+								zoom: 10
+							});
+
+							setTimeout(function(){
+								var marker=new qq.maps.Marker({
+									position:center,
+									animation:qq.maps.MarkerAnimation.DROP,
+									map:map
+								});
+//								var label = new qq.maps.Label({
+//									position: center,
+//									map: map,
+//									content:'我的位置'
+//								});
+								//marker.setAnimation(qq.maps.Animation.DROP);
+							},2000);
+
+//							//创建marker
+//							var marker = new qq.maps.Marker({
+//								position: center,
+//								map: map
+//							});
+
+							var infoWin = new qq.maps.InfoWindow({
+								map: map
+							});
+							var latlngs = [
+								new qq.maps.LatLng(latitude,longitude),
+								new qq.maps.LatLng(39.86447,116.39336),
+								new qq.maps.LatLng(39.90884,116.41306),
+								new qq.maps.LatLng(39.96447,116.42336),
+								new qq.maps.LatLng(39.93884,116.48306)
+							];
+
+							var add=[];
+
+							for(var i = 0;i < latlngs.length; i++) {
+
+								(function(n){
+									var marker = new qq.maps.Marker({
+										position: latlngs[n],
+										map: map
+									});
+
+                                    //经纬度解析为地理位置
+									geocoder.getAddress(latlngs[n]);
+									geocoder = new qq.maps.Geocoder({
+										complete : function(result){
+										var	add=result.detail.address;
+											map.setCenter(result.detail.location);
+//
+											var marker = new qq.maps.Marker({
+												map:map,
+												position: result.detail.location
+											});
+
+//											var label = new qq.maps.Label({
+//												position: result.detail.location,
+//												map: map,
+//												content:result.detail.address
+//											});
+
+
+
+//											console.log(n)
+
+											qq.maps.event.addListener(marker, 'click', function() {
+
+												infoWin.open();
+												infoWin.setContent('<div style="text-align:center;white-space:'+
+													'nowrap;margin:0px;font-size: 10px;"> ' +
+													result.detail.address + '</div>');
+												infoWin.setPosition(latlngs[n+1]);
+												console.log(n+1)
+
+
+												function map(let,lng,address){
+													wx.openLocation({
+														latitude: let, // 纬度，浮点数，范围为90 ~ -90
+														longitude: lng, // 经度，浮点数，范围为180 ~ -180。
+														name: '书柜位置：', // 位置名
+														address:address, // 地址详情说明
+														scale: 12, // 地图缩放级别,整形值,范围从1~28。默认为最大
+														infoUrl: '' // 在查看位置界面底部显示的超链接,可点击跳转
+													});
+
+												}
+
+													$.confirm("您是否需要详细路线?",  function() {
+														map(latlngs[n+1].lat,latlngs[n+1].lng,add)
+													}, function() {
+														$.toast("取消成功!");
+
+													});
+
+//                                                setTimeout(function(){
+//													map(latlngs[n+1].lat,latlngs[n+1].lng,add)
+//												},3000)
+											});
+
+										}
+									});
+
+
+								})(i);
+							}
+
+						},
+						cancel: function (res) {
+							alert('用户拒绝授权获取地理位置');
+						}
+					});
+
+				}
+			}
+		});
+
+	});
+
+
+
+
+	var geocoder,map,marker = null;
+	var init = function() {
+
+		//调用地址解析类
+		geocoder = new qq.maps.Geocoder({
+			complete : function(result){
+//					console.log(result)
+				map.setCenter(result.detail.location);
+//					var center = new qq.maps.LatLng(result.detail.location.lat,result.detail.location.lng);
+				var marker = new qq.maps.Marker({
+					map:map,
+					position: result.detail.location
+				});
+				var label = new qq.maps.Label({
+					position: result.detail.location,
+					map: map,
+					content:result.detail.address
+				});
+			}
+		});
+	}
+
+
+	function codeAddress() {
+		var address = document.getElementById("address").value;
+		//通过getLocation();方法获取位置信息值
+		geocoder.getLocation(address);
+	}
+
+
+
+
+</script>
+</body>
+</html>

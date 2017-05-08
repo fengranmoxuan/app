@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>考试申请</title>
+    <script src="./js/zepto.min.js"></script>
+    <script src="./js/common.js"></script>
+    <meta content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=no, width=device-width" name="viewport">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="wxapi.js"></script>
+    <!--<script src="./js/request.js"></script>-->
+
+</head>
+<body>
+
+<div class="header grade_head">
+    <ul class="race_title">
+        <li class="focus_race">大赛报名</li>
+        <li >参赛记录</li>
+    </ul>
+</div>
+<div class="race_bod">
+    <div class="race_apply_content">
+        <ul>
+            <li class="conFocus li1">
+                <!--<div class="daSai">-->
+                    <!--<div class="top_all">-->
+                        <!--<a href="/exam/raceDetail">-->
+                            <!--<div class="top_left">-->
+                                <!--<div class="name">司爱明</div>-->
+                                <!--<div class="stop_time"> 报名截止时间</div>-->
+                            <!--</div>-->
+                            <!--<div class="top_right">-->
+                                <!--<div class="clock"><img src="img/coin1_03.jpg"></div>-->
+                                <!--报名中-->
+                            <!--</div>-->
+                        <!--</a>-->
+                    <!--</div>-->
+                    <!--<div class="button_all">-->
+                        <!--<div class="button_left">报名费用:<span>￥</span>50</div>-->
+                        <!--<div class="button_right"><a href="apply">立即报名</a></div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            </li>
+            <li class="li2">
+                <!--<div class="daSai">-->
+                    <!--<div class="top_all">-->
+                        <!--<div class="top_left">-->
+                            <!--<div class="name">第十届'全能五星'：小学生英语竞赛</div>-->
+                            <!--<div class="stop_time"> 考试成绩</div>-->
+                        <!--</div>-->
+                        <!--<div class="top_right">-->
+                            <!--<div class="clock">100分</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="button_all">-->
+                        <!--<div class="button_left">考试时间:2017-03-12</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="daSai">-->
+                    <!--<div class="top_all">-->
+                        <!--<div class="top_left">-->
+                            <!--<div class="name">第十届'全能五星'：小学生英语竞赛</div>-->
+                            <!--<div class="stop_time"> 考试成绩</div>-->
+                        <!--</div>-->
+                        <!--<div class="top_right">-->
+                            <!--<div class="clock">100分</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="button_all">-->
+                        <!--<div class="button_left">考试时间:2017-03-12</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            </li>
+        </ul>
+    </div>
+    <div id="openopen" style="display:none"><%= openid %></div>
+</div>
+
+</body>
+</html>
+<script>
+    function demo(aa,bb,cc){
+        $(aa).click(function(){
+            var index = $(this).index();
+            $(bb).eq(index).show().siblings().hide();
+            $(aa).eq(index).addClass(cc).siblings().removeClass(cc);
+        });
+    }
+    demo('.race_title li','.race_apply_content li','focus_race');
+    $(function(){
+        $.ajax({
+            url:'http://s2.zhishi.asia:3001/races/all',
+            method:'GET',
+            success:function(data){
+             if(data.r==1){
+                window.races = data.d;
+                 console.log(window.races)
+                 $.each(window.races,function(index,data){
+                     var t1=new Date();
+                     var t2=new Date(data.applyEnd);
+                     if(Date.parse(t2) - Date.parse(t1)>0){
+                         $('.li1').append(
+                                 "<div class='daSai'>" +
+                                 "<div class='top_all'>" +
+                                 "<a href='raceDetail'>" +
+                                 "<div class='top_left'>" +
+                                 "<div class='name'>" + data.title+ "</div>" +
+                                 "<div class='stop_time'>" + data.end + "</div>" +
+                                 "</div>" +
+                                 "<div class='top_right'>" +
+                                 "<div class='clock'><img src='img/coin1_03.jpg'></div>" + '报名中' +
+                                 "</div>" +
+                                 "</a>" +
+                                 "</div>" +
+                                 "<div class='button_all'>" +
+                                 "<div class='button_left'>报名费用:<span>￥</span><span>"+data.price+"</span></div>" +
+                                 "<div class='button_right'><a href='apply'>立即报名</a></div>" +
+                                 "</div>" +
+                                 "</div>"
+                         )
+                     }
+                 })
+                 $(".daSai").on('click',function(){
+                     var index=$(this).index();
+                     var str=JSON.stringify(window.races[index]);
+                     console.log(str)
+                     sessionStorage.obj = str;
+                 });
+             }
+         }
+       })
+    })
+    $(function(){
+        $.ajax({
+            url:'http://s2.zhishi.asia:3001/races/join',
+            method:'GET',
+            success:function(data){
+                console.log(data)
+                if(data.r==1){
+                    $data=data.d;
+                    console.log($data)
+                    $.each($data,function(index,data){
+                        console.log(data)
+                        $('.li2').append(
+                                "<div class='daSai'>" +
+                                "<div class='top_all'>" +
+//                                "<a href='raceDetail'>" +
+                                "<div class='top_left'>" +
+                                "<div class='name'>" + data.title+ "</div>" +
+                                "<div class='stop_time'>" + data.end + "</div>" +
+                                "</div>" +
+                                "<div class='top_right'>" +
+                                "<div class='clock'><img src='img/coin1_03.jpg'></div>" + '报名中' +
+                                "</div>" +
+//                                "</a>" +
+                                "</div>" +
+                                "<div class='button_all'>" +
+                                "<div class='button_left'>报名费用:<span>￥</span><span>"+data.price+"</span></div>" +
+                                "<div class='button_right'><a href='apply'>立即报名</a></div>" +
+                                "</div>" +
+                                "</div>"
+                        )
+                    })
+
+                }
+            }
+        })
+    })
+
+
+//    url: xxx/paper/item
+
+</script>
+
+
+
+
+

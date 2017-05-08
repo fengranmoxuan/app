@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绘本源</title>
+    <link rel="stylesheet" href="css/V&A.css">
+    <script src="/wxapi.js"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <script>
+        document.getElementsByTagName("html")[0].style.fontSize=document.documentElement.clientWidth/15+"px";
+    </script>
+</head>
+<body>
+<header>
+    <ul id="menu">
+        <li class="fl active">看绘本</li>
+        <li class="fl">听绘本</li>
+    </ul>
+</header>
+<section id="content" style="display: block">
+    <div class="main" style="display: block">
+        <ul class="valist" id="vlist"></ul>
+    </div>
+    <div class="main" style="display: none">
+        <ul class="valist" id="alist">
+            <li class="list display-box box-orient-h">
+                <img src="img/post.jpg" alt="" class="pic"/>
+                <dl class="box-flex-1">
+                    <dt>米菲在糖果乐园</dt>
+                    <dd>播放：23333</dd>
+                </dl>
+            </li>
+            <li class="list display-box box-orient-h">
+                <img src="img/post.jpg" alt="" class="pic"/>
+                <dl class="box-flex-1">
+                    <dt>米菲在糖果乐园</dt>
+                    <dd>播放：23333</dd>
+                </dl>
+            </li>
+            <li class="list display-box box-orient-h">
+                <img src="img/post.jpg" alt="" class="pic"/>
+                <dl class="box-flex-1">
+                    <dt>米菲在糖果乐园</dt>
+                    <dd>播放：23333</dd>
+                </dl>
+            </li>
+            <li class="list display-box box-orient-h">
+                <img src="img/post.jpg" alt="" class="pic"/>
+                <dl class="box-flex-1">
+                    <dt>米菲在糖果乐园</dt>
+                    <dd>播放：23333</dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+</section>
+<div class="err" style="display: none" id="err">
+    <img src="img/ic_empty.png"/>
+    <p>网络错误</p>
+</div>
+<script>
+
+    window.wxapi.config();
+    /*******切换*******/
+    var li=document.getElementById('menu').getElementsByTagName('li');
+    var tab=document.getElementById('content').children;
+
+    for(var i=0;i<li.length;i++){
+        li[i].index = i;
+        li[i].onclick=function(){
+            for(var i=0;i<li.length;i++){
+                li[i].className="fl";
+                tab[i].style.display="none";
+            };
+            this.className = "fl active";
+            tab[this.index].style.display="block";
+        };
+    };
+
+    /************无网络***********/
+    var content=document.getElementById("content");
+    var err=document.getElementById("err");
+    /************获取数据**********/
+    var xhr = new XMLHttpRequest();
+    xhr.open('get','http://app.bzby365.com:8001/a/new_home?category_name=1&limit=30&skip=1',true);
+    xhr.send();
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState === 4){
+            if(xhr.status === 200){
+                var data = JSON.parse(xhr.responseText);
+                if( !data|| !data.data || !data.data.data) return ;
+
+                var d = data.data.data,len = d.length;
+                localStorage.videos = JSON.stringify(d);
+                var str="";
+                for(var i=0;i<len;i++){
+                    var item = "<li " +
+                        "class='list display-box box-orient-h'><img src='"+d[i].cover_image
+                        +"' class='pic'/><dl class='box-flex-1'><dt>"
+                        +d[i].name+"</dt><dd>播放："
+                        +d[i].play_count+"</dd></dl><div><i class='iconfont icon-bofang'>"
+                        + "</i></div></li>";
+                    str += item;
+                }
+
+                var parent = document.getElementById('vlist');
+                parent.innerHTML = str;
+                var list = parent.getElementsByTagName('li');
+
+                for(i=0; i<len; i++){
+                    list[i]._id = d[i]._id;
+                    list[i].onclick = function () {
+//                        localStorage.currentI = this.index;
+                        window.location.href = "Vdetail?_id="+this._id;
+                    };
+                }
+
+            }else{
+                content.style.display="none";
+                err.style.display="block";
+            }
+        }
+    }
+    ///////////////////////////////////////////////////////////
+    wx.ready(function () {
+        wx.onMenuShareTimeline({
+            title: '绘本源',
+            desc:'读绘本，让孩子更聪明，思维更敏捷，绘本源为孩子启蒙智力，开拓思维。',
+            imgUrl: 'img/xunlianying.png',
+            link: window.location.href,
+            type:'link',
+            success: function () {
+//              alert("分享成功");
+            },
+            cancel: function () {
+//             confirm("确定取消？");
+            }
+        });
+        wx.onMenuShareAppMessage({
+            title: '绘本源', // 分享标题
+            desc:'读绘本，让孩子更聪明，思维更敏捷，绘本源为孩子启蒙智力，开拓思维。',
+            link: window.location.href, // 分享链接
+            imgUrl:'img/xunlianying.png' , // 分享图标
+            type: 'video', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+        });
+    });
+    fetch("http://s2.zhishi.asia:3001/common/gzhZhixue").then(function(res){
+
+    });
+
+
+
+</script>
+</body>
+</html>
